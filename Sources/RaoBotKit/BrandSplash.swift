@@ -26,7 +26,10 @@ public struct BrandSplash: View {
                     Text(emoji).font(.system(size: 34))
                 }
                 (Text(base).foregroundColor(.primary) + Text(accent).foregroundColor(accentColor))
-                    .font(.system(size: 60, weight: .heavy, design: .rounded))
+                    .font(.system(size: 56, weight: .heavy, design: .rounded))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
+                    .padding(.horizontal, 24)
                 RaoBotCredit()
                     .padding(.top, 6)
             }
