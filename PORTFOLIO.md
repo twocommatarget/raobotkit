@@ -43,8 +43,12 @@
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,
-  "Up to Next Major" from 1.0.0. **Commit Package.resolved.** For Xcode Cloud, grant the
-  workflow read access to the raobotkit repo.
+  "Up to Next Major" from 1.0.0. **Commit Package.resolved.**
+- **Xcode Cloud + this private package (DONE 2026-08-01):** the Xcode Cloud GitHub App was
+  granted access to **all `twocommatarget` repositories**, so CI can clone `raobotkit`. This
+  covers every RaoBot game — no per-game grant needed. (Symptom if it ever regresses: CI
+  Archive fails with *"could not read Username for 'https://github.com'"* cloning raobotkit →
+  re-check GitHub → Settings → Applications → Xcode Cloud → Repository access.)
 - Public API: `BrandStyle` (palette), `RaoBotWordmark`, `RaoBotCredit`, `AppBackground`,
   `BrandSplash`, `BrandSplashHost` (splash-skip env var `RBK_SKIP_SPLASH`), `MarqueeRibbon`,
   `Haptics.found()/win()`, `Sound.found()/win()`.
