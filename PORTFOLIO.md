@@ -37,6 +37,9 @@
 - **GuessWhatWord** (Taboo-style party game): bundle `com.Iflex.ios.GuessWhat`, App Store id
   **598264247**, accent **amber**. v2.0 approved & live. v2.1 (adds in-app rating: Settings
   link + StoreKit requestReview after 2nd/8th game) **submitted — Waiting for Review**.
+- **Ghost Wanderer** (NEXT — planning): bundle `ai.raobot.game.ghostwanderer`, repo
+  `ghostwanderer`, directory `Games/GhostWanderer/`. Accent TBD (not green/amber). Not started
+  — spec pending. The `.xcodeproj` shell will be created in Xcode by the user (Option B).
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,
