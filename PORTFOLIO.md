@@ -39,16 +39,14 @@
   **598264247**, accent **amber**. v2.0 live. v2.1 (adds in-app rating: Settings link + StoreKit
   requestReview after 2nd/8th game) **APPROVED 2026-08-01** — release in App Store Connect if not
   auto-released.
-- **Ghost Wanderer** (NEXT — in build): bundle `ai.raobot.game.ghostwanderer`, repo
-  `ghostwanderer`, directory `Games/GhostWanderer/`. Accent **spectral violet `#8F7BE0`**
-  (spec-defined; the game's dark look intentionally overrides the RaoBot palette in-game).
-  **Core + app COMPLETE, simulator-verified** (2026-08-01): headless engine (47 tests,
-  RNG bit-parity with the prototype) + SwiftUI/SpriteKit app with synthesized audio,
-  persistent ghosts, local leaderboard, haptics, rating prompt. Decisions: local-only v1.0
-  (no telemetry/networked leaderboard — shared privacy page stays accurate), custom dark
-  splash (not BrandSplash), "Haunt a Friend" share deferred to v1.1. Pending: device test +
-  audio A/B by ear, Xcode Cloud workflow, store assets, submission. See the game's
-  PROJECT_HANDOFF.md.
+- **Ghost Wanderer**: bundle `ai.raobot.game.ghostwanderer`, App Store id **6796990138**,
+  repo `ghostwanderer`, directory `Games/GhostWanderer/`. Accent **spectral violet `#8F7BE0`**
+  (spec-defined dark look intentionally overrides the RaoBot palette in-game).
+  **v1.0 SUBMITTED — Waiting for Review (2026-08-01, build 5, auto-release on approval).**
+  9+ rating, privacy "Data Not Collected" (local-only v1.0: no telemetry/networked
+  leaderboard — shared privacy page stays accurate), custom dark splash (not BrandSplash),
+  display name "Wanderer". v1.1 backlog: "Haunt a Friend" ghost share, networked
+  leaderboard/telemetry. See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,
@@ -94,6 +92,11 @@ content as JSON, validate with tests, gate CI on those tests.
   it from the build (no pbxproj edit needed); adding a remote SPM package DOES need pbxproj
   edits (model them on guesswhatword's working entries).
 - Commit `Package.resolved` for remote deps (un-ignore it if the template ignores it).
+- **Xcode Cloud workflow Distribution Preparation must be "App Store Connect"**, not
+  "TestFlight (Internal Testing Only)" — internal-only builds can NEVER be attached to an
+  App Store version (the version page's build picker greys them out with no explanation).
+- Xcode Cloud only finds `ci_scripts/` **next to the .xcodeproj** (e.g. `<Game>/ci_scripts/`),
+  not at the repo root — check the build log for "Post-Clone script not found".
 
 ## Per-game docs to read
 - Each game has `PROJECT_HANDOFF.md` (standardized 12-section source of truth) + `README.md`.
