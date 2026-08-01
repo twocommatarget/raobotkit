@@ -50,7 +50,7 @@
 - **Ghost Deck** (NEXT — in build): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
   directory `Games/GhostDeck/`. Accent **wisp teal `#7BD8A8`**. Haunted card duel vs "the
   Deceiver", companion to Ghost Wanderer (same dark identity + synth kit).
-  **GhostDeckCore done** (2026-08-01): level-1 engine + AI ported from the validated
+  **Core + app COMPLETE, simulator-verified** (2026-08-01): level-1 engine + AI ported from the validated
   prototypes, 15 tests green incl. 1,000-game CI harness (AI 66.4% vs random-legal).
   Decisions: offline v1.0 (vs-AI + pass-and-play, level-1 ruleset only), name Ghost Deck
   (spec's working title was "Wanderer's Deck"; NEVER use "UNO" anywhere — Mattel mark).
