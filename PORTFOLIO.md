@@ -37,9 +37,14 @@
 - **GuessWhatWord** (Taboo-style party game): bundle `com.Iflex.ios.GuessWhat`, App Store id
   **598264247**, accent **amber**. v2.0 approved & live. v2.1 (adds in-app rating: Settings
   link + StoreKit requestReview after 2nd/8th game) **submitted — Waiting for Review**.
-- **Ghost Wanderer** (NEXT — planning): bundle `ai.raobot.game.ghostwanderer`, repo
-  `ghostwanderer`, directory `Games/GhostWanderer/`. Accent TBD (not green/amber). Not started
-  — spec pending. The `.xcodeproj` shell will be created in Xcode by the user (Option B).
+- **Ghost Wanderer** (NEXT — in build): bundle `ai.raobot.game.ghostwanderer`, repo
+  `ghostwanderer`, directory `Games/GhostWanderer/`. Accent **spectral violet `#8F7BE0`**
+  (spec-defined; the game's dark look intentionally overrides the RaoBot palette in-game).
+  **GhostWandererCore done** (2026-07-31): headless engine ported from the validated HTML
+  prototype, 47 tests green. Decisions: local-only v1.0 (no telemetry/networked leaderboard —
+  shared privacy page stays accurate), custom dark splash (not BrandSplash), StoreKit rating
+  prompt in v1.0, "Haunt a Friend" share deferred to v1.1. App shell next: the `.xcodeproj`
+  will be created in Xcode by the user (Option B). See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,
