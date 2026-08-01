@@ -47,6 +47,15 @@
   leaderboard — shared privacy page stays accurate), custom dark splash (not BrandSplash),
   display name "Wanderer". v1.1 backlog: "Haunt a Friend" ghost share, networked
   leaderboard/telemetry. See the game's PROJECT_HANDOFF.md.
+- **Ghost Deck** (NEXT — in build): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
+  directory `Games/GhostDeck/`. Accent **wisp teal `#7BD8A8`**. Haunted card duel vs "the
+  Deceiver", companion to Ghost Wanderer (same dark identity + synth kit).
+  **GhostDeckCore done** (2026-08-01): level-1 engine + AI ported from the validated
+  prototypes, 15 tests green incl. 1,000-game CI harness (AI 66.4% vs random-legal).
+  Decisions: offline v1.0 (vs-AI + pass-and-play, level-1 ruleset only), name Ghost Deck
+  (spec's working title was "Wanderer's Deck"; NEVER use "UNO" anywhere — Mattel mark).
+  v1.1 backlog: level-2 curses, online two-phone mode. App shell next (user creates
+  .xcodeproj, Option B). See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,
