@@ -36,8 +36,9 @@
   1.1 App Store version + submit (or `git tag v1.1`). Also pending: set EU trader status in
   App Store Connect → Business.
 - **GuessWhatWord** (Taboo-style party game): bundle `com.Iflex.ios.GuessWhat`, App Store id
-  **598264247**, accent **amber**. v2.0 approved & live. v2.1 (adds in-app rating: Settings
-  link + StoreKit requestReview after 2nd/8th game) **submitted — Waiting for Review**.
+  **598264247**, accent **amber**. v2.0 live. v2.1 (adds in-app rating: Settings link + StoreKit
+  requestReview after 2nd/8th game) **APPROVED 2026-08-01** — release in App Store Connect if not
+  auto-released.
 - **Ghost Wanderer** (NEXT — in build): bundle `ai.raobot.game.ghostwanderer`, repo
   `ghostwanderer`, directory `Games/GhostWanderer/`. Accent **spectral violet `#8F7BE0`**
   (spec-defined; the game's dark look intentionally overrides the RaoBot palette in-game).
