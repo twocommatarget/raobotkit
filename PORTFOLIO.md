@@ -23,17 +23,18 @@
 ## Repos (GitHub, org twocommatarget)
 - `wordsearch` (private) — Wordsy
 - `guesswhatword` (private) — GuessWhatWord
-- `raobotkit` (private, tag **1.0.1**) — shared package; **`BRAND.md` at its root is the
-  design-system brief — read it first for any new game.**
+- `raobotkit` (**PUBLIC**, tag **1.0.1**) — shared package; **`BRAND.md` at its root is the
+  design-system brief — read it first for any new game.** (Public so Xcode Cloud can resolve
+  it without auth — see the RaoBotKit section below.)
 - `wordsy-legal` (PUBLIC) — GitHub Pages privacy policy for ALL games, live at
   https://twocommatarget.github.io/wordsy-legal/ ("RaoBot Games — Privacy Policy")
 
 ## Game status
 - **Wordsy** (word search): bundle `ai.raobot.game.wordsy`, accent **green**.
   v1.0 **APPROVED & live** (2026-07-30). v1.1 (migrated onto the RaoBotKit package) is
-  **built + committed but NOT yet tagged/submitted**. To ship v1.1: grant Xcode Cloud read
-  access to the `raobotkit` repo, then `git tag v1.1 && git push origin v1.1`. Also pending:
-  set EU trader status in App Store Connect → Business.
+  **CI-green on Xcode Cloud (build 24, 2026-08-01)** — ready to submit: attach build 24 to a
+  1.1 App Store version + submit (or `git tag v1.1`). Also pending: set EU trader status in
+  App Store Connect → Business.
 - **GuessWhatWord** (Taboo-style party game): bundle `com.Iflex.ios.GuessWhat`, App Store id
   **598264247**, accent **amber**. v2.0 approved & live. v2.1 (adds in-app rating: Settings
   link + StoreKit requestReview after 2nd/8th game) **submitted — Waiting for Review**.
