@@ -47,15 +47,24 @@
   leaderboard — shared privacy page stays accurate), custom dark splash (not BrandSplash),
   display name "Wanderer". v1.1 backlog: "Haunt a Friend" ghost share, networked
   leaderboard/telemetry. See the game's PROJECT_HANDOFF.md.
-- **Ghost Deck** (NEXT — in build): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
+- **Ghost Deck** (READY FOR SUBMISSION): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
   directory `Games/GhostDeck/`. Accent **wisp teal `#7BD8A8`**. Haunted card duel vs "the
   Deceiver", companion to Ghost Wanderer (same dark identity + synth kit).
   **Core + app COMPLETE, simulator-verified** (2026-08-01): level-1 engine + AI ported from the validated
   prototypes, 15 tests green incl. 1,000-game CI harness (AI 66.4% vs random-legal).
-  Decisions: offline v1.0 (vs-AI + pass-and-play, level-1 ruleset only), name Ghost Deck
-  (spec's working title was "Wanderer's Deck"; NEVER use "UNO" anywhere — Mattel mark).
-  v1.1 backlog: level-2 curses, online two-phone mode. App shell next (user creates
-  .xcodeproj, Option B). See the game's PROJECT_HANDOFF.md.
+  Decisions: offline v1.0 (vs-AI + pass-and-play, level-1 ruleset only),
+  (spec's working title was "Wanderer's Deck"; NEVER use "UNO" anywhere — Mattel mark, not
+  even in the keyword field: guideline 2.3.7).
+  **Store record complete (2026-08-02, ASC app ID 6797127758): store name
+  "Ghost Deck: Haunted Card Duel"** — plain "Ghost Deck" was TAKEN on the App Store;
+  device display name stays "Ghost Deck". Games > Card/Strategy, 9+ (mild horror themes),
+  Data Not Collected, free in 175 countries, English (U.K.), SKU `ghostdeck`, auto-release.
+  Build 1.0 (1) uploaded via **direct CLI archive+upload** (no Xcode Cloud needed):
+  `xcodebuild archive` + `-exportArchive` with `method=app-store-connect, destination=upload,
+  -allowProvisioningUpdates` — bundle ID must first be REGISTERED MANUALLY at
+  developer.apple.com/identifiers (running on device does NOT register it). Attached to
+  v1.0; awaiting user's "Add for Review" click.
+  v1.1 backlog: level-2 curses, online two-phone mode. See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,
