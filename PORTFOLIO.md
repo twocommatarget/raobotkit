@@ -46,7 +46,8 @@
   9+ rating, privacy "Data Not Collected" (local-only v1.0: no telemetry/networked
   leaderboard — shared privacy page stays accurate), custom dark splash (not BrandSplash),
   display name "Wanderer". v1.1 backlog: "Haunt a Friend" ghost share, networked
-  leaderboard/telemetry. See the game's PROJECT_HANDOFF.md.
+  leaderboard/telemetry, audio session .playback+.mixWithOthers (still .ambient — silent
+  switch mutes it; Ghost Deck fixed this in 1.0.1 and players read the muted state as broken). See the game's PROJECT_HANDOFF.md.
 - **Ghost Deck** (READY FOR SUBMISSION): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
   directory `Games/GhostDeck/`. Accent **wisp teal `#7BD8A8`**. Haunted card duel vs "the
   Deceiver", companion to Ghost Wanderer (same dark identity + synth kit).
