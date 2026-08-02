@@ -10,7 +10,8 @@
 - **Outstanding actions:** (1) **Set EU trader status** (ASC → Business) — until done, ALL apps
   are excluded from the EU. (2) **Wordsy v1.1** is CI-green (build 24) but unsubmitted — decide
   ship vs defer. (3) **Ghost Wanderer 1.0.1** audio fix is prepped (build 6) — upload once v1.0
-  clears review. Minor: split Wordsy's Xcode Cloud workflow (Build+Test on main + tag-release).
+  clears review. (4) **Ghost Deck 1.0.1** (hand UX + deal cue + audio fix) is code-complete on
+  main — upload once its v1.0 clears review. Minor: split Wordsy's Xcode Cloud workflow (Build+Test on main + tag-release).
 
 ## Who / accounts
 - **Brand:** RaoBot (raobot.ai). **Apple:** Iflex Consulting Ltd (Organization), team ID
@@ -73,6 +74,10 @@
   -allowProvisioningUpdates` — bundle ID must first be REGISTERED MANUALLY at
   developer.apple.com/identifiers (running on device does NOT register it). Attached to
   v1.0 and **SUBMITTED — IN REVIEW (auto-release on approval).**
+  **v1.0.1 code-complete on main (2026-08-03, NOT uploaded — ship after v1.0 clears review):**
+  newest cards enter the hand on the LEFT (+ auto-scroll), scroll-aware »/« overflow chevrons
+  (onScrollGeometryChange on iOS 18+ — GeometryReader-in-content offset tracking is DEAD there),
+  hand card count, drawn/hexed-card fly-in, deal-open cue, audio `.playback+.mixWithOthers`.
   v1.1 backlog: level-2 curses, online two-phone mode. See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
