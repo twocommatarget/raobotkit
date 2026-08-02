@@ -2,7 +2,15 @@
 
 > Cross-project source of truth for the RaoBot game portfolio. Load this at the start of any
 > new conversation to continue without dropping context. Pair with `BRAND.md` (design system)
-> in this same repo. Last updated: 2026-07-31.
+> in this same repo. Last updated: 2026-08-03.
+
+## At a glance (2026-08-03)
+- **LIVE:** GuessWhatWord (v2.1), Wordsy (v1.0).
+- **IN REVIEW:** Ghost Wanderer (v1.0), Ghost Deck (v1.0). Both auto-release on approval.
+- **Outstanding actions:** (1) **Set EU trader status** (ASC → Business) — until done, ALL apps
+  are excluded from the EU. (2) **Wordsy v1.1** is CI-green (build 24) but unsubmitted — decide
+  ship vs defer. (3) **Ghost Wanderer 1.0.1** audio fix is prepped (build 6) — upload once v1.0
+  clears review. Minor: split Wordsy's Xcode Cloud workflow (Build+Test on main + tag-release).
 
 ## Who / accounts
 - **Brand:** RaoBot (raobot.ai). **Apple:** Iflex Consulting Ltd (Organization), team ID
@@ -30,25 +38,25 @@
   https://twocommatarget.github.io/wordsy-legal/ ("RaoBot Games — Privacy Policy")
 
 ## Game status
-- **Wordsy** (word search): bundle `ai.raobot.game.wordsy`, accent **green**.
-  v1.0 **APPROVED & live** (2026-07-30). v1.1 (migrated onto the RaoBotKit package) is
-  **CI-green on Xcode Cloud (build 24, 2026-08-01)** — ready to submit: attach build 24 to a
-  1.1 App Store version + submit (or `git tag v1.1`). Also pending: set EU trader status in
-  App Store Connect → Business.
+- **Wordsy** (word search): bundle `ai.raobot.game.wordsy`, accent **green**. **v1.0 LIVE.**
+  v1.1 (migrated onto the RaoBotKit package) is **CI-green (build 24) but NOT submitted** —
+  internal-only change; decide ship (attach build 24 to a 1.1 version + submit, or `git tag v1.1`)
+  vs defer into the next feature update.
 - **GuessWhatWord** (Taboo-style party game): bundle `com.Iflex.ios.GuessWhat`, App Store id
-  **598264247**, accent **amber**. v2.0 live. v2.1 (adds in-app rating: Settings link + StoreKit
-  requestReview after 2nd/8th game) **APPROVED 2026-08-01** — release in App Store Connect if not
-  auto-released.
+  **598264247**, accent **amber**. **v2.1 LIVE** (adds in-app rating: Settings link + StoreKit
+  requestReview after 2nd/8th game).
 - **Ghost Wanderer**: bundle `ai.raobot.game.ghostwanderer`, App Store id **6796990138**,
   repo `ghostwanderer`, directory `Games/GhostWanderer/`. Accent **spectral violet `#8F7BE0`**
   (spec-defined dark look intentionally overrides the RaoBot palette in-game).
-  **v1.0 SUBMITTED — Waiting for Review (2026-08-01, build 5, auto-release on approval).**
+  **v1.0 IN REVIEW (2026-08-01, build 5, auto-release on approval).**
   9+ rating, privacy "Data Not Collected" (local-only v1.0: no telemetry/networked
   leaderboard — shared privacy page stays accurate), custom dark splash (not BrandSplash),
-  display name "Wanderer". v1.1 backlog: "Haunt a Friend" ghost share, networked
-  leaderboard/telemetry, audio session .playback+.mixWithOthers (still .ambient — silent
-  switch mutes it; Ghost Deck fixed this in 1.0.1 and players read the muted state as broken). See the game's PROJECT_HANDOFF.md.
-- **Ghost Deck** (READY FOR SUBMISSION): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
+  display name "Wanderer". **v1.0.1 PREPPED (2026-08-03, build 6):** audio session fixed
+  `.ambient` → `.playback`+`.mixWithOthers` so it's audible on the silent switch (as `.ambient`
+  it was muted and read as broken) — builds clean; **upload only after v1.0 clears review.**
+  v1.1 backlog: "Haunt a Friend" ghost share, networked leaderboard/telemetry. See the game's
+  PROJECT_HANDOFF.md.
+- **Ghost Deck** (IN REVIEW): bundle `ai.raobot.game.ghostdeck`, repo `ghostdeck`,
   directory `Games/GhostDeck/`. Accent **wisp teal `#7BD8A8`**. Haunted card duel vs "the
   Deceiver", companion to Ghost Wanderer (same dark identity + synth kit).
   **Core + app COMPLETE, simulator-verified** (2026-08-01): level-1 engine + AI ported from the validated
@@ -64,7 +72,7 @@
   `xcodebuild archive` + `-exportArchive` with `method=app-store-connect, destination=upload,
   -allowProvisioningUpdates` — bundle ID must first be REGISTERED MANUALLY at
   developer.apple.com/identifiers (running on device does NOT register it). Attached to
-  v1.0; awaiting user's "Add for Review" click.
+  v1.0 and **SUBMITTED — IN REVIEW (auto-release on approval).**
   v1.1 backlog: level-2 curses, online two-phone mode. See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
