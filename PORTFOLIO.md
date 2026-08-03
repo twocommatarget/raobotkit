@@ -7,16 +7,25 @@
 ## At a glance (2026-08-03)
 - **LIVE:** GuessWhatWord (v2.1), Wordsy (v1.0).
 - **IN REVIEW:** Ghost Wanderer (v1.0), Ghost Deck (v1.0). Both auto-release on approval.
-- **Outstanding actions:** (1) **Set EU trader status** (ASC → Business) — until done, ALL apps
-  are excluded from the EU. (2) **Wordsy v1.1** is CI-green (build 24) but unsubmitted — decide
-  ship vs defer. (3) **Ghost Wanderer 1.0.1** audio fix is prepped (build 6) — upload once v1.0
-  clears review. (4) **Ghost Deck 1.0.1** (hand UX + deal cue + audio fix) is code-complete on
-  main — upload once its v1.0 clears review. Minor: split Wordsy's Xcode Cloud workflow (Build+Test on main + tag-release).
+- **Outstanding actions:** (1) ~~EU trader status~~ **RESOLVED for now (2026-08-04): EU/EEA
+  distribution REMOVED** on all apps (avoids the DSA trader requirement while the account sits on
+  the dissolved Iflex entity). UK + US + ~145 other regions stay live. Re-enable EU later via the
+  Dubai company (see Who/accounts). (2) **Wordsy v1.1** is CI-green (build 24) but unsubmitted —
+  decide ship vs defer. (3) **Ghost Wanderer 1.0.1** audio fix is prepped (build 6) — upload once
+  v1.0 clears review. (4) **Ghost Deck 1.0.1** (hand UX + deal cue + audio fix) is code-complete
+  on main — upload once its v1.0 clears review. Minor: split Wordsy's Xcode Cloud workflow (Build+Test on main + tag-release).
 
 ## Who / accounts
 - **Brand:** RaoBot (raobot.ai). **Apple:** Iflex Consulting Ltd (Organization), team ID
   `Y92A57567J`, Apple ID `smrj@hotmail.com`. **GitHub:** user `twocommatarget` (gh CLI is
   authenticated in the dev environment). **Support/Marketing URL:** https://raobot.ai
+- **⚠️ Entity status:** the Apple Developer account is an **Organization** under **Iflex
+  Consulting Ltd, which is now DISSOLVED**. Not an emergency (apps are live/approving), but it
+  needs resolving. **Plan:** set up a **Dubai company** → enroll it as a new Apple Developer
+  **Org** account → **App Transfer** the apps into it → complete **DSA Trader Status** with the
+  Dubai company → **re-enable EU/EEA**. Until then, **do NOT declare trader status with the
+  dissolved company** (false/defunct → fails verification), and **keep EU/EEA distribution OFF**
+  (done 2026-08-04). New games: publish **without EU/EEA** for now.
 - **Dev machine:** macOS, Xcode 26.6 (iOS 26.5 SDK), Swift 6.3. All apps target **iOS 17**,
   **iPhone-only**, **encryption-exempt**, free, no ads / no data collection.
 
