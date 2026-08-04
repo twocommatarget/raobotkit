@@ -3,3 +3,8 @@
 *.xcodeproj
 DerivedData/
 .DS_Store
+
+# Private, never commit (RaoBotKit is public)
+ACCOUNT.local.md
+*.local.md
+.claude/

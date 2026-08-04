@@ -18,57 +18,48 @@
 
 ## Apple account migration (2026-08-04) — READ FIRST
 
-Everything moved off **Iflex Consulting Ltd** (company being wound down) to a
-personal account. New identity:
+Everything moved off **Iflex Consulting Ltd** (company being wound down) to a personal
+**Individual** developer account. **Account IDs, emails, Team IDs, and the ASC API key are
+NOT stored here** — this repo is PUBLIC. They live in the gitignored local file
+**`ACCOUNT.local.md`** (in this same directory) and in **Bitwarden**.
 
-| | |
-|---|---|
-| Team ID | **REDACTED** |
-| Enrolled as | **Individual** — the App Store shows the holder's legal name as developer |
-| Apple ID | REDACTED (different from the Iflex ID REDACTED) |
-| ASC API key | Key `REDACTED`, Issuer `REDACTED`, **Admin** |
-| Key file | `~/.appstoreconnect/private_keys/AuthKey_REDACTED.p8` (chmod 600; also in Bitwarden) |
-| Bundle IDs | **`ai.raobot.games.*`** — note `games` PLURAL; retired Iflex IDs were `ai.raobot.game.*` singular |
-| Copyright | `2026 Surlu Rao` |
-| EU | **Not distributed** by choice — trader status would publish an individual's address/phone. Reversible once a company exists. |
+Non-secret facts:
+- Enrolled as **Individual** — the App Store shows the holder's legal name as developer.
+- Bundle IDs are now **`ai.raobot.games.*`** — note `games` **PLURAL**; retired Iflex IDs were
+  `ai.raobot.game.*` singular.
+- Copyright: `2026 Surlu Rao`.
+- **EU not distributed** by choice (trader status would publish an individual's address/phone;
+  reversible once a company exists).
 
-**Ghost Deck was renamed Curse Deck** — the clean name was available on the new
-account (plain "Ghost Deck" had been taken, forcing the old "Ghost Deck: Haunted
-Card Duel"). Repo and Xcode project keep the GhostDeck name internally; only the
-product name changed.
+**Ghost Deck was renamed Curse Deck** — the clean name was available on the new account (plain
+"Ghost Deck" had been taken, forcing the old "Ghost Deck: Haunted Card Duel"). Repo and Xcode
+project keep the GhostDeck name internally; only the product name changed.
 
-**Apps that were never released cannot be transferred** — Apple requires a
-released version — so the two ghost games were recreated from scratch. Wordsy
-and GuessWhatWord ARE live, so they must use Apple's proper **app transfer**
-(preserves users, ratings, rankings) rather than being recreated.
+**Apps that were never released cannot be transferred** — Apple requires a released version — so
+the two ghost games were recreated from scratch. Wordsy and GuessWhatWord ARE live, so they must
+use Apple's proper **app transfer** (preserves users, ratings, rankings) rather than recreated.
 
 ### Upload pipeline (no Xcode Cloud, no Apple ID prompt)
-```
-xcodebuild archive -project X.xcodeproj -scheme X -configuration Release \
-  -destination 'generic/platform=iOS' -archivePath X.xcarchive -allowProvisioningUpdates
-xcodebuild -exportArchive -archivePath X.xcarchive \
-  -exportOptionsPlist ExportOptions.plist -exportPath export   # destination=export
-xcrun altool --upload-app -f export/X.ipa -t ios \
-  --apiKey REDACTED --apiIssuer REDACTED
-```
-**Gotchas:** (1) signing still needs the Apple ID in Xcode → Settings → Accounts;
-the API key uploads but cannot sign. (2) `archive` signs for **development**
-first (re-signed at export), so a brand-new team with **zero registered devices**
-fails with "Your team has no devices" — register one via `POST /v1/devices`.
-(3) The ASC API can set metadata/screenshots/age rating but **cannot create app
-records** and **cannot set the privacy label** — both are browser-only.
+`xcodebuild archive` → `xcodebuild -exportArchive` (ExportOptions.plist) → `xcrun altool
+--upload-app -f export/X.ipa -t ios --apiKey <KEY_ID> --apiIssuer <ISSUER>` (full command +
+the actual key/issuer are in `ACCOUNT.local.md`).
+**Gotchas:** (1) signing still needs the Apple ID in Xcode → Settings → Accounts; the API key
+uploads but cannot sign. (2) `archive` signs for **development** first (re-signed at export), so
+a brand-new team with **zero registered devices** fails with "Your team has no devices" —
+register one via `POST /v1/devices`. (3) The ASC API can set metadata/screenshots/age rating
+but **cannot create app records** and **cannot set the privacy label** — both are browser-only.
 
 ## Who / accounts
-- **Brand:** RaoBot (raobot.ai). **Apple:** Iflex Consulting Ltd (Organization), team ID
-  `REDACTED`, Apple ID `REDACTED`. **GitHub:** user `twocommatarget` (gh CLI is
-  authenticated in the dev environment). **Support/Marketing URL:** https://raobot.ai
-- **⚠️ Entity status:** the Apple Developer account is an **Organization** under **Iflex
-  Consulting Ltd, which is now DISSOLVED**. Not an emergency (apps are live/approving), but it
-  needs resolving. **Plan:** set up a **Dubai company** → enroll it as a new Apple Developer
-  **Org** account → **App Transfer** the apps into it → complete **DSA Trader Status** with the
-  Dubai company → **re-enable EU/EEA**. Until then, **do NOT declare trader status with the
-  dissolved company** (false/defunct → fails verification), and **keep EU/EEA distribution OFF**
-  (done 2026-08-04). New games: publish **without EU/EEA** for now.
+- **Brand:** RaoBot (raobot.ai). **Apple:** now a personal **Individual** account (2026-08-04);
+  the retired **Iflex Consulting Ltd** org is being wound down. **Team IDs, Apple IDs, and the
+  ASC API key are in the gitignored `ACCOUNT.local.md` / Bitwarden — NOT in this public repo.**
+  **GitHub:** user `twocommatarget` (gh CLI authenticated). **Support/Marketing URL:** https://raobot.ai
+- **⚠️ Entity status:** apps migrated off the **now-dissolved Iflex** org to a personal
+  **Individual** account (valid legal person; unblocks publishing). Not an emergency. **Longer-term
+  plan:** set up a **Dubai company** → enroll it as an Apple Developer **Org** account →
+  **App Transfer** the live apps → complete **DSA Trader Status** → **re-enable EU/EEA**. Until a
+  company exists, **keep EU/EEA distribution OFF** (individual trader status would publish a home
+  address/phone). New games: publish **without EU/EEA** for now.
 - **Dev machine:** macOS, Xcode 26.6 (iOS 26.5 SDK), Swift 6.3. All apps target **iOS 17**,
   **iPhone-only**, **encryption-exempt**, free, no ads / no data collection.
 
