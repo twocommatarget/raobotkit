@@ -15,9 +15,52 @@
   v1.0 clears review. (4) **Ghost Deck 1.0.1** (hand UX + deal cue + audio fix) is code-complete
   on main — upload once its v1.0 clears review. Minor: split Wordsy's Xcode Cloud workflow (Build+Test on main + tag-release).
 
+
+## Apple account migration (2026-08-04) — READ FIRST
+
+Everything moved off **Iflex Consulting Ltd** (company being wound down) to a
+personal account. New identity:
+
+| | |
+|---|---|
+| Team ID | **REDACTED** |
+| Enrolled as | **Individual** — the App Store shows the holder's legal name as developer |
+| Apple ID | REDACTED (different from the Iflex ID REDACTED) |
+| ASC API key | Key `REDACTED`, Issuer `REDACTED`, **Admin** |
+| Key file | `~/.appstoreconnect/private_keys/AuthKey_REDACTED.p8` (chmod 600; also in Bitwarden) |
+| Bundle IDs | **`ai.raobot.games.*`** — note `games` PLURAL; retired Iflex IDs were `ai.raobot.game.*` singular |
+| Copyright | `2026 Surlu Rao` |
+| EU | **Not distributed** by choice — trader status would publish an individual's address/phone. Reversible once a company exists. |
+
+**Ghost Deck was renamed Curse Deck** — the clean name was available on the new
+account (plain "Ghost Deck" had been taken, forcing the old "Ghost Deck: Haunted
+Card Duel"). Repo and Xcode project keep the GhostDeck name internally; only the
+product name changed.
+
+**Apps that were never released cannot be transferred** — Apple requires a
+released version — so the two ghost games were recreated from scratch. Wordsy
+and GuessWhatWord ARE live, so they must use Apple's proper **app transfer**
+(preserves users, ratings, rankings) rather than being recreated.
+
+### Upload pipeline (no Xcode Cloud, no Apple ID prompt)
+```
+xcodebuild archive -project X.xcodeproj -scheme X -configuration Release \
+  -destination 'generic/platform=iOS' -archivePath X.xcarchive -allowProvisioningUpdates
+xcodebuild -exportArchive -archivePath X.xcarchive \
+  -exportOptionsPlist ExportOptions.plist -exportPath export   # destination=export
+xcrun altool --upload-app -f export/X.ipa -t ios \
+  --apiKey REDACTED --apiIssuer REDACTED
+```
+**Gotchas:** (1) signing still needs the Apple ID in Xcode → Settings → Accounts;
+the API key uploads but cannot sign. (2) `archive` signs for **development**
+first (re-signed at export), so a brand-new team with **zero registered devices**
+fails with "Your team has no devices" — register one via `POST /v1/devices`.
+(3) The ASC API can set metadata/screenshots/age rating but **cannot create app
+records** and **cannot set the privacy label** — both are browser-only.
+
 ## Who / accounts
 - **Brand:** RaoBot (raobot.ai). **Apple:** Iflex Consulting Ltd (Organization), team ID
-  `Y92A57567J`, Apple ID `smrj@hotmail.com`. **GitHub:** user `twocommatarget` (gh CLI is
+  `REDACTED`, Apple ID `REDACTED`. **GitHub:** user `twocommatarget` (gh CLI is
   authenticated in the dev environment). **Support/Marketing URL:** https://raobot.ai
 - **⚠️ Entity status:** the Apple Developer account is an **Organization** under **Iflex
   Consulting Ltd, which is now DISSOLVED**. Not an emergency (apps are live/approving), but it
