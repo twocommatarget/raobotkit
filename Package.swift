@@ -5,11 +5,14 @@ import PackageDescription
 // One source of truth: add this package to each game, `import RaoBotKit`.
 let package = Package(
     name: "RaoBotKit",
-    platforms: [.iOS(.v17)],
+    // macOS is declared only so `swift test` runs on the host machine — the
+    // games themselves ship iOS-only.
+    platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(name: "RaoBotKit", targets: ["RaoBotKit"]),
     ],
     targets: [
         .target(name: "RaoBotKit"),
+        .testTarget(name: "RaoBotKitTests", dependencies: ["RaoBotKit"]),
     ]
 )
