@@ -2,11 +2,13 @@
 
 > Cross-project source of truth for the RaoBot game portfolio. Load this at the start of any
 > new conversation to continue without dropping context. Pair with `BRAND.md` (design system)
-> in this same repo. Last updated: 2026-08-03.
+> in this same repo. Last updated: 2026-08-07.
 
-## At a glance (2026-08-03)
+## At a glance (2026-08-07)
 - **LIVE:** GuessWhatWord (v2.1), Wordsy (v1.0).
 - **IN REVIEW:** Ghost Wanderer (v1.0), Ghost Deck (v1.0). Both auto-release on approval.
+- **IN BUILD:** **Word Heist (v1.0)** — code-complete, simulator-verified, 103 tests green.
+  No ASC record yet, nothing uploaded. Next: device test → repo → register bundle ID → record.
 - **Outstanding actions:** (1) ~~EU trader status~~ **RESOLVED for now (2026-08-04): EU/EEA
   distribution REMOVED** on all apps (avoids the DSA trader requirement while the account sits on
   the dissolved Iflex entity). UK + US + ~145 other regions stay live. Re-enable EU later via the
@@ -36,8 +38,14 @@ Non-secret facts:
 project keep the GhostDeck name internally; only the product name changed.
 
 **Apps that were never released cannot be transferred** — Apple requires a released version — so
-the two ghost games were recreated from scratch. Wordsy and GuessWhatWord ARE live, so they must
-use Apple's proper **app transfer** (preserves users, ratings, rankings) rather than recreated.
+the two ghost games were recreated from scratch. Wordsy and GuessWhatWord were live, so they used
+Apple's proper **app transfer** (preserves users, ratings, rankings).
+
+**✅ MIGRATION COMPLETE (2026-08-07):** all apps now live on the individual account
+**HBH7R5DSYD**; Iflex (`Y92A57567J`) is fully retired. **Sign everything with `HBH7R5DSYD`.**
+Wordsy's & GuessWhatWord's Xcode projects were updated off the stale `Y92A57567J`. Uploading a
+transferred app shows a benign keychain warning (90076: app-id prefix `Y92A57567J.* →
+HBH7R5DSYD.*`) — harmless (RaoBot games use UserDefaults, not the Keychain).
 
 ### Upload pipeline (no Xcode Cloud, no Apple ID prompt)
 `xcodebuild archive` → `xcodebuild -exportArchive` (ExportOptions.plist) → `xcrun altool
@@ -54,12 +62,13 @@ but **cannot create app records** and **cannot set the privacy label** — both 
   the retired **Iflex Consulting Ltd** org is being wound down. **Team IDs, Apple IDs, and the
   ASC API key are in the gitignored `ACCOUNT.local.md` / Bitwarden — NOT in this public repo.**
   **GitHub:** user `twocommatarget` (gh CLI authenticated). **Support/Marketing URL:** https://raobot.ai
-- **⚠️ Entity status:** apps migrated off the **now-dissolved Iflex** org to a personal
-  **Individual** account (valid legal person; unblocks publishing). Not an emergency. **Longer-term
-  plan:** set up a **Dubai company** → enroll it as an Apple Developer **Org** account →
-  **App Transfer** the live apps → complete **DSA Trader Status** → **re-enable EU/EEA**. Until a
-  company exists, **keep EU/EEA distribution OFF** (individual trader status would publish a home
-  address/phone). New games: publish **without EU/EEA** for now.
+- **✅ Entity status (DONE 2026-08-07):** all apps have migrated off the **now-dissolved Iflex**
+  org to the personal **Individual** account, **team `HBH7R5DSYD`** (valid legal person). Sign
+  everything with `HBH7R5DSYD`; the old `Y92A57567J` is retired. **Longer-term plan:** set up a
+  **Dubai company** → enroll it as an Apple Developer **Org** account → **App Transfer** again →
+  complete **DSA Trader Status** → **re-enable EU/EEA**. Until a company exists, **keep EU/EEA
+  distribution OFF** (individual trader status would publish a home address/phone). New games:
+  publish **without EU/EEA** for now.
 - **Dev machine:** macOS, Xcode 26.6 (iOS 26.5 SDK), Swift 6.3. All apps target **iOS 17**,
   **iPhone-only**, **encryption-exempt**, free, no ads / no data collection.
 
@@ -122,6 +131,34 @@ but **cannot create app records** and **cannot set the privacy label** — both 
   (onScrollGeometryChange on iOS 18+ — GeometryReader-in-content offset tracking is DEAD there),
   hand card count, drawn/hexed-card fly-in, deal-open cue, audio `.playback+.mixWithOthers`.
   v1.1 backlog: level-2 curses, online two-phone mode. See the game's PROJECT_HANDOFF.md.
+- **Word Heist** (word-puzzle caper): bundle `ai.raobot.games.wordheist`, repo `wordheist`
+  (**not yet created**), directory `Games/WordHeist/`. Accent **vault crimson `#C6455A`**.
+  Every vault is locked with language — five lock types (anagram tumbler, synonym laser grid,
+  Caesar cipher, word ladder, cryptic clue) behind one `Lock` protocol, so heists are pure data.
+  **v1.0 CODE-COMPLETE + SIMULATOR-VERIFIED (2026-08-06), NOT uploaded, no ASC record.**
+  103 tests green (82 `WordHeistCore` incl. ContentLint over the shipped campaign, 13 app,
+  8 XCUITest covering both full clears, a blown-job regroup, the Daily Job share sheet and
+  two tumbler regressions);
+  Release archive succeeds. 10-heist campaign (3 rookie / 4 intermediate / 3 mastermind) with
+  sequential unlocking, date-seeded **Daily Job** + share grid, crew screen, 4+, privacy
+  "Data Not Collected", iPhone-only portrait, encryption-exempt. Rookie tier is pitched at ~11
+  (tap tiles, cipher shift stated); mastermind types and deduces. Full RaoBotKit brand shell
+  (BrandSplashHost / AppBackground / RaoBotCredit / MarqueeRibbon / Haptics) with the noir
+  surfaces layered *over* AppBackground. Content is **generated** by `Scripts/author_content.py`
+  — ciphertexts computed, every ladder BFS-proved climbable — and ContentLint is the contract
+  the future content pipeline must satisfy. ⚠️ **RaoBotKit's `Telemetry` is deliberately never
+  started** so the privacy label stays truthful; starting it would invalidate the label and
+  `PrivacyInfo.xcprivacy`. **Two user-reported tumbler bugs fixed 2026-08-07:** lock models
+  were not `@Observable`, so tapping a tile mutated the model while the screen stayed frozen
+  (a partly filled tumbler reports an empty progress message, so nothing else forced a
+  redraw); and typed "nine-pin" mode drew blank slots instead of the scrambled pins, leaving
+  7 of 10 heists with nothing to unscramble. Both now have UI regression tests, verified to
+  fail without the fix. **Bust rule changed 2026-08-07 (user decision, diverges from the
+  prototype):** blowing the job no longer restarts the heist — locks already opened STAY
+  open and play resumes at the first lock still shut. The cost moved to `totalAlarms`, which
+  keeps counting across regroups, so the perfect-heist bonus is forfeited permanently and the
+  saved result records every alarm. Next: device test (VoiceOver, Dynamic Type, cold launch) → repo →
+  register bundle ID manually → ASC record. See the game's PROJECT_HANDOFF.md.
 
 ## RaoBotKit (the shared package)
 - SPM, iOS 17+, tag 1.0.1. Add via SPM URL `https://github.com/twocommatarget/raobotkit`,

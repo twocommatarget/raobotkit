@@ -131,7 +131,8 @@ content as JSON, validate it with tests, gate CI (Xcode Cloud) on those tests.
 - **Age rating 4+**, but do **not** enroll in the Made-for-Kids category, and do **not** put
   "Kids" in the App Store name/subtitle — Apple rejects that (Guideline 2.3.8) unless you join
   that category. Use "family-friendly" / "ad-free" instead.
-- **Signing:** Apple team **Iflex Consulting Ltd** (`Y92A57567J`), Apple ID `smrj@hotmail.com`.
+- **Signing:** Apple **Individual** account, team **`HBH7R5DSYD`** (the old Iflex org
+  `Y92A57567J` is retired — all apps transferred 2026-08-07). Credentials in `ACCOUNT.local.md`.
 
 ---
 
@@ -141,3 +142,4 @@ content as JSON, validate it with tests, gate CI (Xcode Cloud) on those tests.
 |---|---|---|---|
 | **Wordsy** (word search) | green | `ai.raobot.game.wordsy` | first live game; adopted the package in v1.1 |
 | **GuessWhatWord** (Taboo-style) | amber | `com.Iflex.ios.GuessWhat` | rebuild of a legacy app; on the package from day one |
+| **Word Heist** (word-puzzle caper) | vault crimson `#C6455A` | `ai.raobot.games.wordheist` | full brand shell over a noir look; `Telemetry` deliberately not started |
