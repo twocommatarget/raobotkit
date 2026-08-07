@@ -38,6 +38,9 @@ public struct MarqueeRibbon: View {
                     .offset(x: offset(at: timeline.date))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                // Fade the text at both edges so scrolling letters dissolve in/out
+                // instead of being hard-clipped mid-glyph at the ribbon boundary.
+                .mask { edgeFadeMask }
             }
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .contentShape(RoundedRectangle(cornerRadius: 12))
@@ -53,6 +56,18 @@ public struct MarqueeRibbon: View {
         guard textWidth > 0, !reduceMotion else { return 0 }
         let distance = CGFloat(now.timeIntervalSince(startDate)) * CGFloat(speed)
         return -distance.truncatingRemainder(dividingBy: textWidth)
+    }
+
+    /// Opaque in the middle, transparent over a fixed strip at each end — a fixed
+    /// point width (not a fraction), so the fade looks the same on any ribbon width.
+    private var edgeFadeMask: some View {
+        HStack(spacing: 0) {
+            LinearGradient(colors: [.clear, .black], startPoint: .leading, endPoint: .trailing)
+                .frame(width: 22)
+            Color.black
+            LinearGradient(colors: [.black, .clear], startPoint: .leading, endPoint: .trailing)
+                .frame(width: 22)
+        }
     }
 
     private var marqueeText: some View {
